@@ -8,7 +8,7 @@
   },
   {
     "userId": 2,
-    "username": "admin2",,
+    "username": "admin2",
     "email":"admin2@gmail.com",
     "password":"admin2",
     "roleId":1
