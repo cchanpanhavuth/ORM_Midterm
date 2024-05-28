@@ -1,5 +1,5 @@
 const express = require("express");
-const userRoutes = require("./routers/userRoutes")
+const userRoutes = require("./src/routes/userRoutes")
 const app = express();
 const dotenv = require('dotenv');
 
