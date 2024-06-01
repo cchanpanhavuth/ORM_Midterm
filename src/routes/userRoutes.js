@@ -9,6 +9,6 @@ userRoutes.post("/users", userController.createNewUser)
 
 userRoutes.patch("/users/:id/updatePassword", userController.updatePassword)
 
-userRoutes.delete("/users/:id/deleteuser", userController.deleteUser)
+userRoutes.delete("/users/:id/deleteUser", userController.deleteUser)
 
 module.exports = userRoutes;

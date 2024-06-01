@@ -2,16 +2,16 @@
     {
         "roleId": 1,
         "roleName": "admin",
-        "rodeDescription":"Admin user with all permissions"
+        "roleDescription":"Admin user with all permissions"
     },
     {
         "roleId": 2,
         "roleName": "user",
-        "rodeDescription":"Normal user with limited permissions"
+        "roleDescription":"Normal user with limited permissions"
     },
     {
         "roleId": 3,
         "roleName": "banned",
-        "rodeDescription":"Banned user with no permissions"
+        "roleDescription":"Banned user with no permissions"
     }
 ]

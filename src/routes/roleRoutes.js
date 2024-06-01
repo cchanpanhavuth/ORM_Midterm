@@ -9,6 +9,6 @@ roleRoutes.post("/roles", roleController.createNewRole)
 
 roleRoutes.patch("/roles/:id/updateDescription", roleController.updateDesciption)
 
-roleRoutes.delete("/roles/:id/deleteuser", roleController.deleteRole)
+roleRoutes.delete("/roles/:id/deleteRole", roleController.deleteRole)
 
 module.exports = roleRoutes;
