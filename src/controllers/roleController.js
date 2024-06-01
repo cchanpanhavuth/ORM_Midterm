@@ -1,21 +1,15 @@
 const roleData = require("../models/roles.json")
 
 const getAllRole = (req, res) => {
-  const {query} = req;
-  if(query.roleName) {
-    res.send(roleData.filter(r=> r.roleName == query.roleName))
-  } else{
-    res.send(roleData);
-  }
-  
+  res.json(res.paginatedResults);
 }
 
-const createNewRole = (request, response) => {
-  const body = request.body;
+const createNewRole = (req, res) => {
+  const body = req.body;
   console.log({ body })
   const { roleName, roleDescription} = body;
   roleData.push({ roleId: roleData.length+1, roleName, roleDescription})
-  response.status(201).send("Success Created")
+  res.status(201).send("Success Created")
 }
 const updateDesciption = (req, res) => {
   const { body, params } = req;

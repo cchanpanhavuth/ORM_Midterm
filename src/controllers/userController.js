@@ -1,14 +1,9 @@
 const userData = require("../models/users.json")
+// const paginatedResults = require("./pagination.js")
 
 const getAllUser = (req, res) => {
-  const {query} = req;
-  if(query.username) {
-    res.send(userData.filter(u=> u.username == query.username))
-  } else{
-    res.send(userData);
-  }
-  
-}
+  res.json(res.paginatedResults);
+};
 
 const createNewUser = (request, response) => {
   const body = request.body;
