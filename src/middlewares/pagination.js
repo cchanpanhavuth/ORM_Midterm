@@ -5,17 +5,17 @@ const paginatedResults = (model) => {
     const filters = req.query.filters ? req.query.filters.split(',') : [];
     const values = req.query.values ? req.query.values.split(',') : [];
 
-    let filteredModel = model;
-
     if (filters.length !== values.length) {
       return res.status(400).json({ message: "The number of filters and values must be the same" });
     }
 
-    if (filters.length > 0 && values.length > 0 && filters.length === values.length) {
+    let filteredModel = model;
+
+    if (filters.length > 0) {
       filteredModel = model.filter(item => {
         return filters.every((filter, index) => {
           const value = values[index];
-          return item[filter] && item[filter].includes(value);
+          return item[filter] && item[filter].toString().includes(value.toString());
         });
       });
     }
@@ -43,6 +43,6 @@ const paginatedResults = (model) => {
     res.paginatedResults = results;
     next();
   };
-};
+}
 
 module.exports = paginatedResults;
