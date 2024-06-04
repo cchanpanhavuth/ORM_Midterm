@@ -1,0 +1,17 @@
+[
+    {
+        "roleId": 1,
+        "roleName": "admin",
+        "roleDescription":"Admin user with all permissions"
+    },
+    {
+        "roleId": 2,
+        "roleName": "user",
+        "roleDescription":"Normal user with limited permissions"
+    },
+    {
+        "roleId": 3,
+        "roleName": "banned",
+        "roleDescription":"Banned user with no permissions"
+    }
+]
