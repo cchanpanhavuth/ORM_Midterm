@@ -1,16 +1,22 @@
-// src/middlewares/pagination.js
 const paginatedResults = (model) => {
   return (req, res, next) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
-    const filter = req.query.filter;
-    const value = req.query.value;
+    const filters = req.query.filters ? req.query.filters.split(',') : [];
+    const values = req.query.values ? req.query.values.split(',') : [];
 
     let filteredModel = model;
 
-    if (filter && value) {
+    if (filters.length !== values.length) {
+      return res.status(400).json({ message: "The number of filters and values must be the same" });
+    }
+
+    if (filters.length > 0 && values.length > 0 && filters.length === values.length) {
       filteredModel = model.filter(item => {
-        return item[filter] && item[filter].includes(value);
+        return filters.every((filter, index) => {
+          const value = values[index];
+          return item[filter] && item[filter].includes(value);
+        });
       });
     }
 
@@ -36,7 +42,7 @@ const paginatedResults = (model) => {
     results.results = filteredModel.slice(startIndex, endIndex);
     res.paginatedResults = results;
     next();
-  }
-}
+  };
+};
 
 module.exports = paginatedResults;
