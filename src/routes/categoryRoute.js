@@ -5,8 +5,10 @@ const paginatedResults = require('../middlewares/pagination');
 
 categoryRoutes.get("/categories", paginatedResults(categoryData),categoryController.getAllCategories);
 
-categoryRoutes.post("/categories/:id/updateCategory", categoryController.updateCategory);
+categoryRoutes.post("/categories", categoryController.createNewCategory)
 
-categoryRoutes.patch("/categories/:id/deleteCategory", categoryController.deleteCategory);
+categoryRoutes.patch("/categories/:id/updateCategory", categoryController.updateCategory);
+
+categoryRoutes.delete("/categories/:id/deleteCategory", categoryController.deleteCategory);
 
 module.exports = categoryRoutes;

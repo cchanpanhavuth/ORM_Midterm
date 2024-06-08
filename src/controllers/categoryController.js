@@ -5,39 +5,14 @@ const getAllCategories = (req, res) => {
   res.json(res.paginatedResults);
 }
 
-// const getCategoryById = (req, res) => {
-//   const { params } = req;
-//   const id = parseInt(params.id);
-
-//   const category = categoryData.find(category => category.categoryId === id);
-
-//   if (category) {
-//     res.status(200).json(category); // Use JSON format for response data
-//   } else {
-//     res.status(404).send("Comment not found");
-//   }
-// };
-
 //Create New Category
 const createNewCategory = (req, res) => {
   const body = req.body;
+  console.log({ body })
   const {categoryName} = body;
-  // Generate a unique comment ID (consider using a library for robustness)
-  let newCategoryId;
-  if (categoryData.length === 0) {
-    newCategoryId = 1;
-  } else {
-    const highestId = Math.max(...categoryData.map(category => category.categoryId));
-    newCategoryId = highestId + 1;
-  }
-  const newCategory = {
-    categoryId: newCategoryId,
-    categoryName
-  };
-
-  categoryData.push(newCategory);
-  res.status(201).send("Category created successfully");
-};
+  categoryData.push({ categoryId: categoryData.length+1, categoryName})
+  res.status(201).send("New Category was Created Successfully")
+}
 
 //Update Category
 const updateCategory = (req, res) => {
@@ -45,14 +20,19 @@ const updateCategory = (req, res) => {
   const id = parseInt(params.id);
   const { categoryName } = body;
 
-  // Find the comment by ID
-  const categoryIndex = categoryData.findIndex(category => category.categoryId === id);
+  let categoryFound = false;
 
-  if (categoryIndex !== -1) {
-    categoryData[categoryIndex].categoryName = categoryName ;
-    res.status(200).send("Category updated successfully"); // Use 200 for successful update
+  categoryData.forEach(category => {
+    if (category.categoryId === id) {
+      category.categoryName = categoryName;
+      categoryFound = true;
+    }
+  });
+
+  if (categoryFound) {
+    res.status(204).send("Category was updated successfully");
   } else {
-    res.status(404).send("Category not found");
+    res.status(404).send("Category Could not find");
   }
 };
 
@@ -75,5 +55,5 @@ const deleteCategory = (req, res) => {
 };
 
 module.exports = {
-    getAllCategories, updateCategory, deleteCategory
+    getAllCategories, createNewCategory,updateCategory, deleteCategory
 }
