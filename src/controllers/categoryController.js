@@ -16,24 +16,20 @@ const createNewCategory = (req, res) => {
 
 //Update Category
 const updateCategory = (req, res) => {
-  const { body, params } = req;
-  const id = parseInt(params.id);
-  const { categoryName } = body;
-
-  let categoryFound = false;
-
-  categoryData.forEach(category => {
-    if (category.categoryId === id) {
-      category.categoryName = categoryName;
-      categoryFound = true;
-    }
-  });
-
-  if (categoryFound) {
-    res.status(204).send("Category was updated successfully");
-  } else {
-    res.status(404).send("Category Could not find");
+  //Look up category using the req id
+  // If category does not exist, then resture 404 not found
+  console.log(parseInt(req.params.id))
+  const category = categoryData.find(c => c.categoryId === parseInt(req.params.id));
+  if(!category) {
+    res.status(404).send("A category was not found")
   }
+  //Validation
+  //If invalid then return 400 -Bad Request
+
+  //Update Course 
+  //Return the category
+  category.categoryName = req.body.categoryName;
+  res.send(category);
 };
 
 
