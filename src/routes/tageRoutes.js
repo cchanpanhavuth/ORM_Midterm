@@ -1,14 +1,14 @@
 const tageRoutes = require("express").Router();
 const tageData = require("../models/tages.json")
-const tageController = require("../controllers/categoryController")
+const tageController = require("../controllers/tageController")
 const paginatedResults = require('../middlewares/pagination');
 
-categoryRoutes.get("/categories", paginatedResults(categoryData),categoryController.getAllCategories);
+tageRoutes.get("/tages", paginatedResults(tageData),tageController.getAllTages);
 
-categoryRoutes.post("/categories", categoryController.createNewCategory)
+tageRoutes.post("/tages", tageController.createNewTage)
 
-categoryRoutes.patch("/categories/:id/updateCategory", categoryController.updateCategory);
+tageRoutes.patch("/tages/:id/updateTage", tageController.updateTage);
 
-categoryRoutes.delete("/categories/:id/deleteCategory", categoryController.deleteCategory);
+tageRoutes.delete("/tages/:id/deleteTage", tageController.deleteTage);
 
-module.exports = categoryRoutes;
+module.exports = tageRoutes;

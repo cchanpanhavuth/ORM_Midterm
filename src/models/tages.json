@@ -1,7 +1,7 @@
 [
     {"tageId":1, "tageName":"Programing Language"},
     {"tageId": 2, "tageName":"Entrepreneurship"},
-    {"tageId":3, "tageName":"Lifretyle"},
+    {"tageId":3, "tageName":"Lifestyle"},
     {"tageId":4,"tageName":"Healthy Life"},
     {"tageId":5, "tageName":"Economic"}
 ]

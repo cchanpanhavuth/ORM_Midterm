@@ -1,5 +1,5 @@
 // const { response } = require("express");
-const categoryData = require("../models/tages.json")
+const tageData = require("../models/tages.json")
 
 const getAllTages= (req, res) => {
   res.json(res.paginatedResults);
@@ -9,9 +9,9 @@ const getAllTages= (req, res) => {
 const createNewTage = (req, res) => {
   const body = req.body;
   console.log({ body })
-  const {categoryName} = body;
-  categoryData.push({ categoryId: categoryData.length+1, categoryName})
-  res.status(201).send("New Category was Created Successfully")
+  const {tageName} = body;
+  tageData.push({ tageId: tageData.length+1, tageName})
+  res.status(201).send("New Tage was Created Successfully")
 }
 
 //Update Category
@@ -19,34 +19,32 @@ const updateTage = (req, res) => {
   //Look up category using the req id
   // If category does not exist, then resture 404 not found
   console.log(parseInt(req.params.id))
-  const category = categoryData.find(c => c.categoryId === parseInt(req.params.id));
-  if(!category) {
-    res.status(404).send("A category was not found")
+  const tage = tageData.find(t => t.tageId === parseInt(req.params.id));
+  if(!tage) {
+    res.status(404).send("A tage was not found")
   }
   //Validation
   //If invalid then return 400 -Bad Request
 
   //Update Course 
   //Return the category
-  category.categoryName = req.body.categoryName;
-  res.send(category);
+  tage.tageName = req.body.tageName;
+  res.send(tage);
 };
 
 
 //Delete Category
 const deleteTage = (req, res) => {
   const { params } = req;
-  const id = parseInt(params.id);
-
   // Find the index of the comment to delete
-  const categoryIndex = categoryData.findIndex(category => category.categoryId === id);
+  const tageIndex = tageData.findIndex(t => t.tageId === parseInt(params.id));
 
-  if (categoryIndex !== -1) {
+  if (tageIndex !== -1) {
     // Remove the comment using splice
-    categoryData.splice(categoryIndex, 1);
-    res.status(200).send("Category deleted successfully");
+    tageData.splice(tageIndex, 1);
+    res.status(200).send("Tage was deleted successfully");
   } else {
-    res.status(404).send("Category not found");
+    res.status(404).send("Tage was not found");
   }
 };
 
