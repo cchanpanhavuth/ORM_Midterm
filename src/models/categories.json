@@ -1,6 +1,6 @@
 [
     {"categoryId":1, "categoryName": "Business"},
     {"categoryId":2, "categoryName": "Sport"},
-    {"categoryId":3, "categoryName": "politic"},
+    {"categoryId":3, "categoryName": "Politic"},
     {"categoryId":4, "categoryName": "Lifestyle"}
 ]

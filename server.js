@@ -10,8 +10,7 @@ const port = process.env.PORT;
 
 app.use(express.json())
 app.use("/assets", express.static("public"))
-app.use("/v1",userRoutes, roleRoutes)
-app.use('/v1',categoryRoutes)
+app.use("/v1",userRoutes, roleRoutes,categoryRoutes)
 app.get("/", (req, res) => {
   const style = "stylesheet"
   res.send("<link rel='"+ style +"' href='/assets/css/styles.css'><h1 style='color: red'><img src='/assets/img/landscape.webp'>NodeJS Project</h1>")

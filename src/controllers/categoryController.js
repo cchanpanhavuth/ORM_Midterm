@@ -2,21 +2,21 @@
 const categoryData = require("../models/categories.json")
 
 const getAllCategories = (req, res) => {
-  res.send(categoryData);
+  res.json(res.paginatedResults);
 }
 
-const getCategoryById = (req, res) => {
-  const { params } = req;
-  const id = parseInt(params.id);
+// const getCategoryById = (req, res) => {
+//   const { params } = req;
+//   const id = parseInt(params.id);
 
-  const category = categoryData.find(category => category.categoryId === id);
+//   const category = categoryData.find(category => category.categoryId === id);
 
-  if (category) {
-    res.status(200).json(category); // Use JSON format for response data
-  } else {
-    res.status(404).send("Comment not found");
-  }
-};
+//   if (category) {
+//     res.status(200).json(category); // Use JSON format for response data
+//   } else {
+//     res.status(404).send("Comment not found");
+//   }
+// };
 
 //Create New Category
 const createNewCategory = (req, res) => {
@@ -75,5 +75,5 @@ const deleteCategory = (req, res) => {
 };
 
 module.exports = {
-    getAllCategories, getCategoryById, updateCategory, deleteCategory
+    getAllCategories, updateCategory, deleteCategory
 }

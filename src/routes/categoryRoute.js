@@ -1,12 +1,12 @@
 const categoryRoutes = require("express").Router();
+const categoryData = require("../models/categories.json")
 const categoryController = require("../controllers/categoryController")
+const paginatedResults = require('../middlewares/pagination');
 
-categoryRoutes.get("/categories", categoryController.getAllCategories)
+categoryRoutes.get("/categories", paginatedResults(categoryData),categoryController.getAllCategories);
 
-categoryRoutes.get("/categories", categoryController.getCategoryById)
+categoryRoutes.post("/categories/:id/updateCategory", categoryController.updateCategory);
 
-categoryRoutes.post("/categories", categoryController.updateCategory)
-
-categoryRoutes.patch("/categories", categoryController.deleteCategory)
+categoryRoutes.patch("/categories/:id/deleteCategory", categoryController.deleteCategory);
 
 module.exports = categoryRoutes;
