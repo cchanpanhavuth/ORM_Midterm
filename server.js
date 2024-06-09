@@ -2,7 +2,7 @@ const express = require("express");
 const userRoutes = require("./src/routes/userRoutes")
 const roleRoutes = require("./src/routes/roleRoutes")
 const categoryRoutes = require("./src/routes/categoryRoute")
-const tageRoutes = require("./src/routes/tageRoutes")
+const tagRoutes = require("./src/routes/tagRoutes")
 const app = express();
 const dotenv = require('dotenv');
 
@@ -12,7 +12,7 @@ const port = process.env.PORT;
 
 app.use(express.json())
 app.use("/assets", express.static("public"))
-app.use("/v1",userRoutes, roleRoutes,categoryRoutes,tageRoutes)
+app.use("/v1",userRoutes, roleRoutes,categoryRoutes,tagRoutes)
 app.get("/", (req, res) => {
   const style = "stylesheet"
   res.send("<link rel='"+ style +"' href='/assets/css/styles.css'><h1 style='color: red'><img src='/assets/img/landscape.webp'>NodeJS Project</h1>")
