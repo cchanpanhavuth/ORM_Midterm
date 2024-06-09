@@ -38,16 +38,14 @@ const deleteRole = (req, res) => {
   console.log({params})
   const id = parseInt(params.id)
 
-  const filteredRoles = roleData.filter(role => role.roleId !== id);
+  const roleIndex = roleData.findIndex(role => role.roleId === id);
 
-  if (filteredRoles.length < roleData.length) {
-    roleData = filteredRoles;
-    res.status(200).send("Success Deleted");
-  }else{
+  if (roleIndex !== -1) {
+    roleData.splice(roleIndex, 1);
+    res.status(200).send("Role deleted successfully");
+  } else {
     res.status(404).send("Role not found");
   }
-
-
 }
 module.exports = {
   getAllRole,
