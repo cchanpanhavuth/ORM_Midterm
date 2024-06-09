@@ -1,0 +1,23 @@
+[
+  {
+    "commentId": 1,
+    "userId": 10,
+    "contentId": 1,
+    "commentText": "This is a great post!",
+    "commentDate": "2024-06-02T06:46:00+07:00"
+  },
+  {
+    "commentId": 2,
+    "userId": 5,
+    "contentId": 2,
+    "commentText": "I agree, very informative!",
+    "commentDate": "2024-06-02T08:12:00+07:00"
+  },
+  {
+    "commentId": 3,
+    "userId": 9,
+    "contentId": 3,
+    "commentText": "Thanks for sharing!",
+    "commentDate": "2024-06-02T10:25:00+07:00"
+  }
+]

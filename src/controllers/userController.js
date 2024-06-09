@@ -39,16 +39,14 @@ const deleteUser = (req, res) => {
   console.log({params})
   const id = parseInt(params.id)
 
-  const filteredUsers = userData.filter(user => user.userId !== id);
+  const userIndex = userData.findIndex(user => user.userId === id);
 
-  if (filteredUsers.length < userData.length) {
-    userData = filteredUsers;
-    res.status(200).send("Success Deleted");
-  }else{
+  if (userIndex !== -1) {
+    userData.splice(userIndex, 1);
+    res.status(200).send("User deleted successfully");
+  } else {
     res.status(404).send("User not found");
   }
-
-
 }
 module.exports = {
   getAllUser,
