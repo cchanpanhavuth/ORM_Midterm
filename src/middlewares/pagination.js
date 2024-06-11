@@ -2,8 +2,8 @@ const paginatedResults = (model) => {
   return (req, res, next) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
-    const filters = req.query.filters ? req.query.filters.split(',') : [];
-    const values = req.query.values ? req.query.values.split(',') : [];
+    const filters = req.query.filters ? req.query.filters.split('|') : [];
+    const values = req.query.values ? req.query.values.split('|') : [];
 
     if (filters.length !== values.length) {
       return res.status(400).json({ message: "The number of filters and values must be the same" });
