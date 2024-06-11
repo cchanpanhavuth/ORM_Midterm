@@ -5,6 +5,8 @@ const paginatedResults = require('../middlewares/pagination');
 
 tagRoutes.get("/tags", paginatedResults(tagData),tagController.getAllTags);
 
+tagRoutes.get("/tags/:id", tagController.getTagById)
+
 tagRoutes.post("/tags", tagController.createNewTag)
 
 tagRoutes.patch("/tags/:id/updatetag", tagController.updateTag);

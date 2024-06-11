@@ -5,6 +5,8 @@ const paginatedResults = require('../middlewares/pagination');
 
 userRoutes.get('/users', paginatedResults(userData), userController.getAllUser);
 
+userRoutes.get("/users/:id", userController.getUserById)
+
 userRoutes.post("/users", userController.createNewUser)
 
 userRoutes.patch("/users/:id/updatePassword", userController.updatePassword)

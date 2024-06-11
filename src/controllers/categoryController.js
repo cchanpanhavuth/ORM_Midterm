@@ -14,6 +14,19 @@ const createNewCategory = (req, res) => {
   res.status(201).send("New Category was Created Successfully")
 }
 
+const getCategoryById = (req, res) => {
+  const { params } = req;
+  const id = parseInt(params.id);
+
+  const category = categoryData.find(category => category.categoryId === id);
+
+  if (category) {
+      res.status(200).json(category); // Use JSON format for response data
+  } else {
+      res.status(404).send("Category not found");
+  }
+};
+
 //Update Category
 const updateCategory = (req, res) => {
   //Look up category using the req id
@@ -51,5 +64,5 @@ const deleteCategory = (req, res) => {
 };
 
 module.exports = {
-    getAllCategories, createNewCategory,updateCategory, deleteCategory
+    getAllCategories, createNewCategory,updateCategory, deleteCategory,getCategoryById
 }

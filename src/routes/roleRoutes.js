@@ -5,6 +5,8 @@ const paginatedResults = require('../middlewares/pagination');
 
 roleRoutes.get("/roles", paginatedResults(roleData), roleController.getAllRole)
 
+roleRoutes.get("/roles/:id", roleController.getRoleById)
+
 roleRoutes.post("/roles", roleController.createNewRole)
 
 roleRoutes.patch("/roles/:id/updateDescription", roleController.updateDesciption)

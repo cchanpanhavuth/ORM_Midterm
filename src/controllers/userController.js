@@ -1,8 +1,20 @@
 const userData = require("../models/users.json")
-// const paginatedResults = require("./pagination.js")
 
 const getAllUser = (req, res) => {
   res.json(res.paginatedResults);
+};
+
+const getUserById = (req, res) => {
+  const { params } = req;
+  const id = parseInt(params.id);
+
+  const user = userData.find(user => user.userId === id);
+
+  if (user) {
+      res.status(200).json(user); // Use JSON format for response data
+  } else {
+      res.status(404).send("User not found");
+  }
 };
 
 const createNewUser = (request, response) => {
@@ -52,5 +64,6 @@ module.exports = {
   getAllUser,
   createNewUser,
   updatePassword,
-  deleteUser
+  deleteUser,
+  getUserById
 }

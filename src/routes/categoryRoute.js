@@ -5,6 +5,8 @@ const paginatedResults = require('../middlewares/pagination');
 
 categoryRoutes.get("/categories", paginatedResults(categoryData),categoryController.getAllCategories);
 
+categoryRoutes.get("/categories/:id", categoryController.getCategoryById)
+
 categoryRoutes.post("/categories", categoryController.createNewCategory)
 
 categoryRoutes.patch("/categories/:id/updateCategory", categoryController.updateCategory);
