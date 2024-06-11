@@ -24,22 +24,23 @@ const createNewUser = (request, response) => {
   userData.push({ userId: userData.length+1, username: username, email: email, roleId: roleId, password:password})
   response.status(201).send("Success Created")
 }
-const updatePassword = (req, res) => {
+const updateUser = (req, res) => {
   const { body, params } = req;
   const id = parseInt(params.id);
-  const { password } = body;
+  const { password,username } = body;
 
   let userFound = false;
 
   userData.forEach(user => {
     if (user.userId === id) {
-      user.password = password;
+      user.password = password,
+      user.username = username
       userFound = true;
     }
   });
 
   if (userFound) {
-    res.status(204).send("Password updated successfully");
+    res.status(204).send("User updated successfully");
   } else {
     res.status(404).send("User not found");
   }
@@ -63,7 +64,7 @@ const deleteUser = (req, res) => {
 module.exports = {
   getAllUser,
   createNewUser,
-  updatePassword,
+  updateUser,
   deleteUser,
   getUserById
 }

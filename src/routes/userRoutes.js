@@ -9,7 +9,7 @@ userRoutes.get("/users/:id", userController.getUserById)
 
 userRoutes.post("/users", userController.createNewUser)
 
-userRoutes.patch("/users/:id/updatePassword", userController.updatePassword)
+userRoutes.patch("/users/:id/updateUser", userController.updateUser)
 
 userRoutes.delete("/users/:id/deleteUser", userController.deleteUser)
 
